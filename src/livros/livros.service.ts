@@ -37,6 +37,6 @@ export class LivrosService {
   async remove(id: number) {
     const livro = await this.repository.findOneBy({id});
     if(!livro) return null;
-    this.repository.delete(livro)
+    await this.repository.delete({id})
   }
 }

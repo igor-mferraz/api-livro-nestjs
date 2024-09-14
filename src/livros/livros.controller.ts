@@ -21,18 +21,21 @@ export class LivrosController {
   async findOne(@Param('id') id: string) {
     const livro = await this.livrosService.findOne(+id);
     if(!livro) throw new NotFoundException()
+    return livro;
   }
 
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateLivroDto: UpdateLivroDto) {
     const livro = await this.livrosService.update(+id, updateLivroDto);
     if(!livro) throw new NotFoundException()
+    return livro;
   }
 
   @Delete(':id')
   @HttpCode(204)
   async remove(@Param('id') id: string) {
-    const livro = await this.livrosService.remove(+id);
-    if(!livro) throw new NotFoundException()
+    const livro = await this.livrosService.findOne(+id);
+    if(!livro) throw new NotFoundException();
+    await this.livrosService.remove(+id);
   }
 }

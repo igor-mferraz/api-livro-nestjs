@@ -21,7 +21,7 @@ Content-Type: application/json
 
 
 ###UPDATE
-PATCH http://localhost:3000/livros/2
+PATCH http://localhost:3000/livros/8
 
 {
     "nomeLivro": ""
@@ -29,4 +29,4 @@ PATCH http://localhost:3000/livros/2
 
 
 ###DELETE
-DELETE http://localhost:3000/livros/1
+DELETE http://localhost:3000/livros/8
