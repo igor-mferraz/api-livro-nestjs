@@ -1,0 +1,32 @@
+### GET ALL
+GET http://localhost:3000/livros
+
+
+### GET LIVRO
+GET http://localhost:3000/livros/1
+
+
+###CREATE
+POST http://localhost:3000/livros
+Content-Type: application/json
+
+{
+    "nomeLivro": "teste",
+    "autor":"teste",
+    "dataLancamento": "2024-09-19",
+    "numeroEdicao": 1,
+    "localLancamento": "Curitiba",
+    "codigoBarras": "4234234"
+}
+
+
+###UPDATE
+PATCH http://localhost:3000/livros/2
+
+{
+    "nomeLivro": ""
+}
+
+
+###DELETE
+DELETE http://localhost:3000/livros/1
