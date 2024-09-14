@@ -19,8 +19,12 @@ export class LivrosService {
     return this.repository.save(livro);
   }
 
-  findAll() {
-    return this.repository.find();
+  async findAll(page: number, limit:number) {
+    const [items, total] = await this.repository.findAndCount({
+      skip: (page - 1) * limit,
+      take: limit
+    })
+    return {items, total}
   }
 
   findOne(id: number) {

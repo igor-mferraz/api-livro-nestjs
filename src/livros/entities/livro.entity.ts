@@ -14,7 +14,7 @@ export class Livro {
     @Column()
     dataLancamento: Date;
 
-    @Column()
+    @Column({nullable:true})
     numeroEdicao: number;
 
     @Column()

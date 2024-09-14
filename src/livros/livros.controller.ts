@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, NotFoundException, Query } from '@nestjs/common';
 import { LivrosService } from './livros.service';
 import { CreateLivroDto } from './dto/create-livro.dto';
 import { UpdateLivroDto } from './dto/update-livro.dto';
+import { Livro } from './entities/livro.entity';
 
 @Controller('livros')
 export class LivrosController {
@@ -13,8 +14,17 @@ export class LivrosController {
   }
 
   @Get()
-  findAll() {
-    return this.livrosService.findAll();
+  async findAll(
+    @Query('page') page = '1',
+    @Query('limit') limit = '10'
+  ){
+
+    const result = await this.livrosService.findAll(+page, +limit);
+
+    return {
+      data: result.items,
+      total: result.total
+    }
   }
 
   @Get(':id')

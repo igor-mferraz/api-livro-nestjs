@@ -12,9 +12,9 @@ Content-Type: application/json
 
 {
     "nomeLivro": "teste",
+    "numeroEdicao": 1,
     "autor":"teste",
     "dataLancamento": "2024-09-19",
-    "numeroEdicao": 1,
     "localLancamento": "Curitiba",
     "codigoBarras": "4234234"
 }
