@@ -21,10 +21,11 @@ Content-Type: application/json
 
 
 ###UPDATE
-PATCH http://localhost:3000/livros/8
+PATCH http://localhost:3000/livros/11
+Content-Type: application/json
 
 {
-    "nomeLivro": ""
+    "nomeLivro": "igor"
 }
 
 

@@ -16,10 +16,11 @@ export class LivrosController {
   @Get()
   async findAll(
     @Query('page') page = '1',
-    @Query('limit') limit = '10'
+    @Query('limit') limit = '10',
+    @Query('search') search = ''
   ){
 
-    const result = await this.livrosService.findAll(+page, +limit);
+    const result = await this.livrosService.findAll(+page, +limit, search);
 
     return {
       data: result.items,
@@ -33,6 +34,15 @@ export class LivrosController {
     if(!livro) throw new NotFoundException()
     return livro;
   }
+
+  @Get('search')
+  async findOneSearch(@Query('search') search:string) {
+    console.log('pesquisa'+search)
+    // const livro = await this.livrosService.findOneSearch(search);
+    // if(!livro) throw new NotFoundException()
+    // return livro;
+  }
+
 
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateLivroDto: UpdateLivroDto) {
